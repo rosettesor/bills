@@ -1,0 +1,32 @@
+.content-box {
+  background-color: rgba(242, 241, 238, 0.6);
+  padding: 5px 5px 5px 5px;
+/*  border-radius: 20px; */
+  margin-bottom: 10px; 
+  margin-top: 10px;
+}
+
+.image-box {
+  position: relative;
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 2px; 
+  margin-top: 2px;
+  margin-left: 2px
+}
+
+.image-box img {
+  padding: 2px;
+  background-color: rgba(242, 241, 238, 0.85);
+  height: 100%;
+}
+
+.small-font {
+  font-size: 12px;
+}
+
+.padding {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

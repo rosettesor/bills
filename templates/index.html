@@ -13,6 +13,9 @@
 			<h3>bills.com Twitter search</h3>
 				{% for tweet in list_10 %}
 					<div class="span8 row content-box">
+						<div class="span1 all-padding">
+							<input type="checkbox" name="read"/>
+						</div>
 						<div class="span1 img image-box">
 							<img src = "{{ tweet.user_image }}"/>
 						</div>

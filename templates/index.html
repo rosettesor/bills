@@ -5,6 +5,8 @@
 		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 		<!-- Bootstrap -->
 		<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" media="screen">
+		<!-- incorporating jQuery -->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<!-- your css bootstrap overrides css here -->
     <link href="{{ url_for('static', filename='css/css_overrides.css') }}" rel="stylesheet" media="screen">
 	</head>
@@ -12,9 +14,11 @@
 		<div class = "span10 row">
 			<h3>bills.com Twitter search</h3>
 				{% for tweet in list_10 %}
-					<div class="span8 row content-box">
-						<div class="span1 all-padding">
-							<input type="checkbox" name="read"/>
+					<div id="tweet" class="span8 row content-box">
+						<div id="check" class="span1 all-padding">
+							<form method = "POST" action="/">
+								<input type="checkbox" name="read"/>
+							</form>
 						</div>
 						<div class="span1 img image-box">
 							<img src = "{{ tweet.user_image }}"/>
@@ -30,5 +34,10 @@
 		<div class = "span11 row small-font padding">
 			completed for <a href=http://www.bills.com/ target="_blank">bills.com</a> by <a href=https://github.com/rosettesor target="_blank">Rosette Diaz</a>
 		</div>
+		<script>
+			$("#check").on('click', function () {
+				$("#tweet").fadeTo("fast", 0.5);
+			});
+		</script>
 	</body>
 </html>

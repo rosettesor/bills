@@ -5,7 +5,7 @@ import itertools
 import unicodedata
 from datetime import datetime, timedelta
 from time import sleep
-from flask import Flask, render_template, redirect, session, url_for
+from flask import Flask, render_template, redirect, session, url_for, request
 
 
 app = Flask(__name__)
@@ -23,8 +23,8 @@ def index():
 		twit_id = twit.id_num
 		in_db_list.append(twit_id)
 
-	for tweet in tweepy.Cursor(api.search, q="bills.com", rpp=10,\
-		result_type="recent", include_entities=True, lang="en").items(10):
+	for tweet in tweepy.Cursor(api.search, q="bills.com", rpp=20,\
+		result_type="recent", include_entities=True, lang="en").items(20):
 		if tweet.id not in in_db_list:
 			new_tweet = model.Tweet()
 			new_tweet.username = tweet.from_user
@@ -39,9 +39,12 @@ def index():
 	top_10 = model.session.query(model.Tweet).order_by(model.Tweet.date.desc()).all()
 	top_10_list = itertools.islice(top_10, 0, 10)
 
-	return render_template("index.html", list_10 = top_10_list)
+	# for tweet in top_10_list:
+	# 	checked = request.form["read"]
+	# 	print checked
+	# 	# if tweet.read == "N":
 
-# about tweet: when made "12 hours ago"
+	return render_template("index.html", list_10 = top_10_list)
 
 if __name__ == "__main__":
 	app.run(debug = True)
